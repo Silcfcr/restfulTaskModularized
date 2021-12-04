@@ -8,17 +8,26 @@ export class HttpService {
 
   constructor(private _http: HttpClient) {
 
+  }
+  getTasks() {
+    return this._http.get('http://localhost:5000/tasks/');
+  }
+  getOneTask(id: string){
+    return this._http.get(`http://localhost:5000/tasks/${id}`);
+  }
+  
+  CreateTask(newTask: any) {
+      return this._http.post('http://localhost:5000/tasks/', newTask)
+  }
 
+  UpdateTask( id: string, updateTask: any) {
+    return this._http.put(`http://localhost:5000/tasks/${id}`, updateTask)
   }
-  getTasks(): void {
-    let tempObservable = this._http.get('http://localhost:5000/tasks/');
-    tempObservable.subscribe(data => console.log('Got our tasks!', data))
+
+  DeleteTask(id: string ){
+    return this._http.delete(`http://localhost:5000/tasks/${id}`)
   }
-  getOneTask(id: string): void {
-    // let id: string = "61a02bd4f1827ff9b9bc897b";
-    let tempObservable = this._http.get(`http://localhost:5000/tasks/${id}`);
-    tempObservable.subscribe(data => console.log('Got one task!', data))
-  }
+  
 
 }
 

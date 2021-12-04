@@ -1,0 +1,12 @@
+<form (submit)="createANewTask()">
+        
+    <!-- use the json pipe to see how newTask changes in real time -->
+        <p> {{ newTask | json }} </p>
+    <input type="text" name="title" [(ngModel)]="newTask.title" />
+    <input type="text" name="description" [(ngModel)]="newTask.description" />
+    <label for="radio">Yes</label>
+    <input type="radio" name="completed" value="true" [(ngModel)]="newTask.completed">
+    <label for="radio">No</label>
+    <input type="radio" name="completed" value="false" [(ngModel)]="newTask.completed">
+    <input type="submit" value="Create Task" />
+</form>
